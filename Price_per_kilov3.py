@@ -1,0 +1,63 @@
+def num_check(question, num_type="float"):
+    """checks that response is a float or integer more than zero"""
+
+    if num_type == "float":
+        error = "please enter a number more than zero."
+    else:
+        error = "please enter an integer more than zero."
+
+    while True:
+        try:
+
+            if num_type == "float":
+                response = float(input(question))
+            else:
+                response = int(input(question))
+
+            if response > 0:
+                return response
+            else:
+                print(error)
+        except ValueError:
+            print(error)
+
+
+# apple weights 2Kg unit price 5$ unit price per kilo 5$
+loop = 5
+while loop:
+    budget = num_check("what is the budget")
+    # show unit price regarding their sold sizes
+    applecost = 5  # 500g
+    woolyscost = 1  # 4kg
+    newworldcost = 5.25  # 500g
+    # shows unit price per kilo
+    apple = 10.00
+    woolys = 4.00
+    newworld = 0.70
+
+
+    apple_weight = .5
+    wooly_weight = .25
+    newworld_weight = 7.5
+
+    my_cost = [applecost, woolyscost, newworldcost]
+    my_numbers = [apple, woolys, newworld]
+    my_weights = [apple_weight, wooly_weight, newworld_weight]
+
+    # my_cost.sort()
+    # my_numbers.sort()
+    # my_weights.sort()
+    if budget < my_cost[0] and budget < my_cost[1] and budget < my_cost[2]:
+        print("nope poor")
+    else:
+    # this displays what the user can afford later
+    # i will isolate variables and compare price by kilo if user can afford it
+        filtered_cost = list(filter(lambda x: x <= budget, my_cost))
+        print(f"This is Unit Price       {filtered_cost}")
+        filtered_numbers = list(filter(lambda x: x <= budget, my_numbers))
+        print(f"This is Price Per Kilo   {filtered_numbers}")
+        filtered_weights = list(filter(lambda x: x <= budget, my_weights))
+        print(f"This is The Weight in Kg {filtered_weights}")
+        if budget > filtered_cost[0] and budget > filtered_weights[0] :
+            print()
+
