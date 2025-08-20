@@ -141,10 +141,10 @@ if budget >= min(cost):
     # changes all things over budget to 100
     for i in range(len(cost)):
         if cost[i] > budget:
-            cost[i] = 100
-            unitprice[i] = 100
-            weight[i] = 100
-    condition = lambda o: o == 100  # condition cant be zero
+            cost[i] = -100
+            unitprice[i] = -100
+            weight[i] = -100
+    condition = lambda o: o == -100  # condition cant be zero
 
     # Creating a copy of the list to avoid modifying it during iteration
     # removes items that are 100
@@ -157,9 +157,9 @@ if budget >= min(cost):
     # Checks for items in unit price that aren't the minimum and makes them 100 including cost and weight
     for i in range(len(cost)):
         if unitprice[i] > min(unitprice):
-            unitprice[i] = 100
-            cost[i] = 100
-            weight[i] = 100
+            unitprice[i] = -100
+            cost[i] = -100
+            weight[i] = -100
 
 
 
